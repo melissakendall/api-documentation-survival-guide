@@ -6,25 +6,27 @@ In this repository, you will find resources used in the API Documentation: A Sur
 
 - [API Documentation Survival Guide](#api-documentation-survival-guide)
 - [Table of Contents](#table-of-contents)
-  - [Requirements](#requirements)
-  - [Installation](#installation)
+  - [Dredd Demo](#dredd-demo)
+    - [Requirements](#requirements)
+    - [Steps](#steps)
+  - [Testing ReDoc](#testing-redoc)
 
-## Requirements
+## Dredd Demo
 
-* Node.js
-* Postman
-* [Dredd](https://dredd.org/en/latest/quickstart.html)
+### Requirements 
 
-## Installation
+First ensure you have the following installed.
 
-```npm install```
+* [Node.js](https://nodejs.org/en/download/) 
+  * These demos were done on v 10.16.0 on a Windows machine
+* [Postman](https://www.getpostman.com/)
+* [Dredd's Requirements](https://dredd.org/en/latest/quickstart.html)
 
-## Testing Out Dredd
+### Steps
 
-```npm install --global```
-
-* Import reference.raml into Postman
-* Create an example for /TimeZones, using the below as a response
+1. Install Dredd `npm install --global`
+2. Import reference.raml into Postman
+3. Create an example in postman for /TimeZones, using the below as a response
 
 ```json
 [
@@ -33,13 +35,18 @@ In this repository, you will find resources used in the API Documentation: A Sur
         "Name": "(UTC-09:00) Alaska",
         "SupportsDaylightSavingTime": true
     }
-]``` 
+]
+``` 
 
-* Create a Mock for the collection in Postman
-* Run Dredd
+4. Create a Mock for the collection in Postman
+5. Run Dredd
 
 ```
 dredd reference.apib https:{{PostmanMockUrl}}.mock.pstmn.io/v1
 ```
 
-Notice it fails because of the additional headers received in postman.
+Dredd will fail because the response returns headers that are not in the spec.
+
+## Testing ReDoc
+
+Open `index.html`.
