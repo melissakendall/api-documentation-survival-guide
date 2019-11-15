@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  title: reference
+  version: v1
+servers:
+  - url: 'https://reference.iqmetrix.net/{version}'
+    variables:
+      version:
+        default: version
+paths:
+  /TimeZones:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeZone'
+      operationId: GET_TimeZones
+      parameters:
+        - name: Accept
+          in: header
+          required: true
+          schema:
+            type: string
+components:
+  schemas:
+    TimeZone:
+      type: array
+      items:
+        type: object
+        properties:
+          Id:
+            description: Identifier
+            example: Alaskan Standard Time
+            type: string
+          Name:
+            description: Name
+            example: '(UTC-09:00) Alaska'
+            type: string
+          SupportsDaylightSavingTime:
+            description: A flag to indicate if this TimeZone observes Daylight Savings Time
+            example: true
+            type: boolean
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

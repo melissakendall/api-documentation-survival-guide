@@ -1,0 +1,55 @@
+openapi: 3.0.0
+info:
+  title: Pokemon
+  version: v2
+servers:
+  - url: 'https://pokeapi.co/api/v2/'
+paths:
+  /pokemon/{Name}:
+    get:
+      summary: 'Getting a Pokemon'
+      description: 'Get details for a pokemon'
+      parameters:
+        - in: path
+          name: Name
+          schema:
+            type: string
+          example: 'Ditto'
+          required: true      
+      responses:
+        200:
+          description: 'Succesful Response'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pokemon'
+components:
+  schemas: 
+    Pokemon:
+      type: object
+      description: 'Pokemon information'
+      properties:
+        id:
+          type: number
+          description: 'Identifier'
+          example: 132
+        name:
+          type: string
+          description: 'Name'
+          example: 'Ditto'
+        height:
+          type: number
+          description: 'Height in feet'
+          example: 3
+        weight:
+          type: number
+          description: 'Weight in pounds'
+          example: 40
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}
